@@ -27,6 +27,8 @@ import { MovieImagePipe } from '../movie-image.pipe';
         [src]="movie().poster_path | movieImage: 780"
         width="780"
         height="1170"
+        [attr.loading]="index() < 1 ? 'eager' : 'lazy'"
+        [attr.fetchpriority]="index() < 1 ? 'high' : 'auto'"
       />
       <div class="movie-card-content">
         <div class="movie-card-title">{{ movie().title | uppercase }}</div>
