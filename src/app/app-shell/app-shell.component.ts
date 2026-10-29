@@ -5,6 +5,7 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { FastSvgComponent } from '@push-based/ngx-fast-svg';
 
 import { MovieService } from '../movie/movie.service';
+import { afterNextPaint } from '../shared/after-next-paint';
 import { TrackingService } from '../shared/tracking.service';
 import { DarkModeToggleComponent } from '../ui/component/dark-mode-toggle/dark-mode-toggle.component';
 import { HamburgerButtonComponent } from '../ui/component/hamburger-button/hamburger-button.component';
@@ -45,7 +46,9 @@ export class AppShellComponent {
     return this._searchValue;
   }
 
-  trackNavigation(route: string) {
+  async trackNavigation(route: string) {
+    // tracking is not needed for the next frame: let the browser paint the navigation first
+    await afterNextPaint();
     this.trackingService.trackEvent(`nav to: ${route}`);
   }
 }
