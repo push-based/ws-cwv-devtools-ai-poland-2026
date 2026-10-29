@@ -1,7 +1,6 @@
 import { NgOptimizedImage, UpperCasePipe } from '@angular/common';
 import {
   Component,
-  computed,
   ElementRef,
   inject,
   input,
@@ -50,9 +49,6 @@ import { StarRatingComponent } from '../../ui/pattern/star-rating/star-rating.co
           Please like me
         }
       </button>
-      @for (item of workItems(); track $index) {
-        <div></div>
-      }
     </div>
   `,
   styles: `
@@ -93,8 +89,6 @@ import { StarRatingComponent } from '../../ui/pattern/star-rating/star-rating.co
 })
 export class MovieCardComponent {
   index = input.required<number>();
-  work = input(250);
-  workItems = computed(() => new Array(this.work()).fill(null));
 
   movie = input.required<TMDBMovieModel>();
   loading = input(false);
