@@ -25,6 +25,8 @@ import { MovieImagePipe } from '../movie-image.pipe';
         class="movie-image"
         [alt]="movie().title"
         [src]="movie().poster_path | movieImage: 780"
+        width="780"
+        height="1170"
       />
       <div class="movie-card-content">
         <div class="movie-card-title">{{ movie().title | uppercase }}</div>
