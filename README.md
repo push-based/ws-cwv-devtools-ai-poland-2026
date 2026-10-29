@@ -27,9 +27,9 @@ All thresholds are judged at the 75th percentile of real page loads.
 **Clone and install**
 
 ```bash
-git clone https://github.com/push-based/{{repoName}}.git
+git clone https://github.com/push-based/ws-cwv-devtools-ai-poland-2026.git
 
-cd {{repoName}}
+cd ws-cwv-devtools-ai-poland-2026
 npm install
 
 # (optional) if the step before didn't work, try:
