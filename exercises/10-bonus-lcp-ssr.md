@@ -9,7 +9,9 @@ With client-side rendering (CSR) the poster URL only exists after
 can shorten it. Server-side rendering (SSR) can: the server runs the app, calls the API and sends HTML
 that already contains the `<img>`.
 
-![csr-timeline-illustration](images/ssr/csr-timeline-illustration.png)
+| CSR                                                                  | SSR                                                                  |
+|----------------------------------------------------------------------|----------------------------------------------------------------------|
+| ![csr-timeline-illustration](images/ssr/csr-timeline-illustration.png) | ![ssr-timeline-illustration](images/ssr/ssr-timeline-illustration.png) |
 
 The price: the server now has to do work before it can send the first byte — **TTFB** goes up.
 Let's see if the trade is worth it.
