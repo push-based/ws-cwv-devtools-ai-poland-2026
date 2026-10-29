@@ -55,25 +55,26 @@ so the one that finishes painting first becomes the LCP element. Keep this in mi
 Open the **Insights** sidebar and expand **LCP breakdown** (older Chrome versions call it
 **LCP by phase**). It shows the four sub-parts as a table and as an overlay on the trace.
 
-![lcp-insights](images/performance-tab/lcp-insights.png)
+![lcp-breakdown](images/performance-tab/lcp-breakdown.png)
 
 Write down the four values. Which sub-part is the biggest?
 
 <details>
   <summary>What we measured</summary>
 
-`Fast 4G`, 1280×800 window, production build:
+`Fast 4G`, production build (the run in the screenshot above):
 
 | Sub-part               | Duration     |
 |------------------------|--------------|
-| Time to first byte     | 2 ms         |
-| Resource load delay    | **1,247 ms** |
-| Resource load duration | **3,043 ms** |
-| Element render delay   | 12 ms        |
-| **LCP**                | **4,304 ms** |
+| Time to first byte     | 13 ms        |
+| Resource load delay    | **3,446 ms** |
+| Resource load duration | **1,352 ms** |
+| Element render delay   | 8 ms         |
+| **LCP**                | **4,820 ms** |
 
-TTFB is tiny: everything is served from `localhost`. The time goes into **waiting for** and
-**downloading** the poster.
+TTFB is tiny: everything is served from `localhost`. Most of the time the browser is **waiting to
+start** the poster download, the rest goes into **downloading** it. In other runs the split between
+the two shifted, but together they were always almost the whole LCP.
 
 </details>
 
@@ -104,6 +105,12 @@ LCP request discovery says:
 * ❌ `fetchpriority=high` applied
 * ✅ lazy load not applied
 
+![lcp-request-discovery-before](images/lcp/lcp-request-discovery-before.png)
+
+The **Network dependency tree** insight shows the same chain as a tree, with the time each step finished:
+
+![request-chain](images/lcp/request-chain.png)
+
 </details>
 
 ## 4. Why does the download take so long?
@@ -114,7 +121,7 @@ Select the poster request in the **Network** track (or the **Network** panel). L
 * its **priority**,
 * how many **other images** are downloading at the same time.
 
-![lazyload-eager-images](images/network/lazyload-eager-images.png)
+![network-img-before](images/lcp/network-img-before.png)
 
 <details>
   <summary>Solution</summary>
@@ -122,7 +129,8 @@ Select the poster request in the **Network** track (or the **Network** panel). L
 * All **20 posters** of the list are requested at once — even the ones far below the fold.
   They all compete for the same bandwidth.
 * Every poster is requested as `w780` (≈ 190 kB), though it's displayed ~300px wide.
-* In total the page transfers **3.9 MB**, 3.4 MB of which are images.
+* In total the page transfers about **3.5 – 3.9 MB**, almost all of it images. The
+  **Improve image delivery** insight estimates **3.3 MB** of possible savings.
 
 </details>
 

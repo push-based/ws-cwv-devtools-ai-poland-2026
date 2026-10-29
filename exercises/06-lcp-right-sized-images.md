@@ -23,6 +23,10 @@ npm run start:prod
 
 At 1280×800: rendered **308 × 462**, intrinsic **780 × 1170**. The LCP poster weighs ~190 kB.
 
+![rendered-vs-intrinsic](images/lcp/rendered-vs-intrinsic.png)
+
+![improve-image-delivery](images/lcp/improve-image-delivery.png)
+
 </details>
 
 ## 1. `srcset` and `sizes` — the platform way
@@ -137,6 +141,8 @@ Back on `npm run start:prod`:
 
 <details>
   <summary>What we measured</summary>
+
+![current-src](images/lcp/current-src.png)
 
 | Screen                   | LCP poster              | Other posters        |
 |--------------------------|-------------------------|----------------------|

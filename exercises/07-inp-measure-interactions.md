@@ -52,6 +52,10 @@ Which interaction is the slowest? Which phase dominates?
 
 Navigation through the sidebar is slow — and it's the **processing** phase.
 
+In the development build it's even slower:
+
+![interactions-log](images/inp/interactions-log.png)
+
 </details>
 
 ## 3. Record the interaction
@@ -62,7 +66,7 @@ Navigation through the sidebar is slow — and it's the **processing** phase.
    processing as the solid part, and the presentation delay as a whisker on the right.
 4. Open the **INP breakdown** insight in the sidebar.
 
-![route-click-interaction](images/performance-tab/route-click-interaction.png)
+![inp-breakdown](images/inp/inp-breakdown.png)
 
 Now look *below* the interaction in the **Main** track. What does the flame chart of the click event
 contain? You might find something that shouldn't run on a click :)

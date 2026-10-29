@@ -100,8 +100,15 @@ its breakdown. Check **LCP request discovery** once more.
 | Transferred (Lighthouse)       | 3.9 MB   | **1.4 MB**   |
 | LCP, 1 run, Fast 4G 1280×800   | 4.2 s    | 3.1 s        |
 
+On a phone-sized screen (device toolbar, one column) only 3 posters load, and only the first one
+with `High` priority: 595 kB instead of 3.5 MB.
+
+![network-img-after](images/lcp/network-img-after.png)
+
 LCP request discovery now shows ✅ for lazy loading and `fetchpriority`. Only
 "discoverable in initial document" is still ❌ — we fix that in the [bonus exercise](./10-bonus-lcp-ssr.md).
+
+![lcp-request-discovery-after](images/lcp/lcp-request-discovery-after.png)
 
 </details>
 
@@ -112,6 +119,15 @@ Run the same measurement 3 times. You'll notice two things:
 * **The LCP element changes.** In a 3-column grid, three posters have the same size. Whichever is
   painted first becomes the LCP — not necessarily the one with `fetchpriority="high"`. On a phone
   (one column) it's always the first.
+
+  On a tall desktop window we even got this: two full rows visible, and the smallest poster of the
+  *second* row (lazy loaded, no priority) finished first and became the LCP. All three checks red:
+
+  ![lcp-request-discovery-race](images/lcp/lcp-request-discovery-race.png)
+
+  The lesson: lazy load only what is really **below the fold**. If a layout shows several equal-size
+  images on the first screen, load all of them `eager` (e.g. `index() < 6`) and keep
+  `fetchpriority="high"` for one or two.
 * **`fetchpriority` barely shows in the lab.** DevTools network throttling slows down each request on
   its own, it doesn't model requests fighting over one slow connection. That's exactly the situation
   where priorities matter on a real network. Lazy loading shows up clearly because it removes requests.

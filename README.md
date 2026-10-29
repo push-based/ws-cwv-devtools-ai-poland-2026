@@ -106,7 +106,7 @@ network — compare **your before** with **your after**, never with these.
 
 | Step                     | Result                                                                                   |
 |--------------------------|------------------------------------------------------------------------------------------|
-| Start                    | CLS 0.28 – 0.81 (poor), LCP 4.3 s on Fast 4G (poor), 20 posters / 3.9 MB loaded upfront |
+| Start                    | CLS 0.28 – 0.87 (poor), LCP 4.3 s on Fast 4G (poor), 20 posters / 3.9 MB loaded upfront |
 | 02 reserve space         | CLS → 0.00                                                                               |
 | 04 lazy + priority       | 20 → 7 image requests, 3.9 MB → 1.4 MB transferred                                       |
 | 06 right-sized images    | 1x desktop screen: LCP poster `w780` → `w500` (~190 → ~100 kB), other posters → `w342` (~50 kB) |

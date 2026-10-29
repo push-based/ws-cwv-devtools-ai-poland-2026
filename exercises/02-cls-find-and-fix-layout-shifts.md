@@ -35,7 +35,7 @@ The log tells you *what* moved. A recording tells you *why*.
 4. Click the biggest cluster. In the **Summary** you see the moved nodes and **potential root causes**.
 5. Open the **Insights** sidebar and expand **Layout shift culprits**.
 
-![preload-measure-cls-perf-panel](images/network/preload-measure-cls-perf-panel.png)
+![layout-shift-culprits](images/cls/layout-shift-culprits.png)
 
 Use the screenshot track to look at the page right before and after a cluster.
 Which resource arrives at exactly that moment?
@@ -102,6 +102,10 @@ Measure again, with the same settings as before. Check the local metric and the
 |----------------------|------------------------|
 | before (Lighthouse)  | 0.37 – 0.81            |
 | after (Lighthouse)   | **0.001**              |
+
+![cls-after](images/cls/cls-after.png)
+
+The only shifts left are tiny `#text` entries: the web font swap from step 4.
 
 The movie detail page (e.g. [/movie/533535](http://localhost:4200/movie/533535)) gets better too:
 its "recommendations" list below the fold uses the same `movie-card`. We measured **0.12 → 0.00**.

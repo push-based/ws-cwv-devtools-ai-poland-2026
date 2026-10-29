@@ -93,6 +93,13 @@ where does `trackEvent` run now?
 `trackEvent` still runs and still takes the same time — but now in its own task *after* the frame
 with the user's response was painted.
 
+![inp-breakdown-after](images/inp/inp-breakdown-after.png)
+
+Zoom out a little and you'll find it: a short `Event: click` task, then a separate
+`Timer fired` task that runs `trackEvent` (113 ms here):
+
+![tracking-after-paint](images/inp/tracking-after-paint.png)
+
 </details>
 
 ## 5. Think further

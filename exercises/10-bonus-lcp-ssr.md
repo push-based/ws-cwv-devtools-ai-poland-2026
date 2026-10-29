@@ -190,6 +190,11 @@ browser doesn't need to repeat them during hydration. But by default it skips re
 So the client requests the movies again, re-renders the list when they arrive and the LCP element is
 painted again: a long **element render delay**.
 
+In the **Network** panel (filter **Fetch/XHR**) you see both API calls again. The **Initiator** tab
+shows they come from our own `main.js`:
+
+![duplicate-api-requests](images/ssr/duplicate-api-requests.png)
+
 </details>
 
 <details>

@@ -30,6 +30,22 @@ Any click that happens during those frames waits up to ~300 ms before its handle
 
 </details>
 
+### 1.1 Not just rendering: hover
+
+While you're in the recording, look for other long tasks. Did you move the mouse over the posters?
+
+<details>
+  <summary>What we found</summary>
+
+`Event: mouseenter` on a movie card took **350 ms**, 153 ms of it **rendering**. The card's tilt
+effect calls `getBoundingClientRect()`, which forces the browser to recalculate styles for the whole
+page first (the red corner on **Recalculate style**, also reported by the **Forced reflow** insight).
+Simply moving the mouse across the grid keeps the main thread busy, and the next click has to wait.
+
+![hover-long-task](images/inp/hover-long-task.png)
+
+</details>
+
 ## 2. Provoke the input delay
 
 Click a sidebar link and, **immediately** after, click another one (or a "Please like me" button).
@@ -50,8 +66,14 @@ Inspect a `movie-card` in the **Elements** panel. What's in there?
 <details>
   <summary>Solution</summary>
 
-**5,521** elements on the page, **264** of them in every single movie card. Each card renders 250 empty
-`<div>`s:
+**5,521** elements on the page, **264** of them in every single movie card. A single style
+recalculation touches 4,809 elements and takes 127 ms:
+
+![dom-size](images/inp/dom-size.png)
+
+Each card renders 250 empty `<div>`s:
+
+![empty-divs](images/inp/empty-divs.png)
 
 ```ts
 // src/app/movie/movie-card/movie-card.component.ts

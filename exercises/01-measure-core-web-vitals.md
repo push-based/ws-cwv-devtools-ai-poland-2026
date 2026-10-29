@@ -20,7 +20,7 @@ npm run start:prod
 Open DevTools and go to the **Performance** panel. Without recording anything, you see the
 **Local metrics** for the current page: LCP, CLS and INP.
 
-![cwv-bottom](images/performance-tab/cwv-bottom.png)
+![local-metrics](images/performance-tab/local-metrics.png)
 
 1. Reload [http://localhost:4200/list/popular](http://localhost:4200/list/popular) and watch LCP and CLS fill in.
 2. Hover the LCP value. Which element is it? Click it to jump to the element in the **Elements** panel.
@@ -34,9 +34,10 @@ Open DevTools and go to the **Performance** panel. Without recording anything, y
   <summary>What you should see</summary>
 
 On a fast machine without throttling LCP is probably "good". **CLS is not**: we measured
-**0.28 – 0.81**, clearly "poor". Open the **Layout shifts** log to see which elements moved.
+**0.28 – 0.87**, clearly "poor". Open the **Layout shifts** log to see which elements moved: one
+big cluster made of `movie-card`s.
 
-![live-metrics-cls](images/network/live-metrics-cls.png)
+![layout-shifts-log](images/performance-tab/layout-shifts-log.png)
 
 </details>
 
@@ -82,6 +83,10 @@ The Performance panel can show both side by side:
    in the same tab and look at the panel again.
 3. Compare **local** vs. **field** values. Use the environment settings to make your local
    numbers resemble the field numbers — that's how you find a realistic throttling setup for your site.
+   DevTools even suggests one: under **Environment settings** it tells you which network throttling
+   matches the 75th percentile of your real users.
+
+![field-data](images/performance-tab/field-data.png)
 
 <details>
   <summary>Things to know about field data</summary>
