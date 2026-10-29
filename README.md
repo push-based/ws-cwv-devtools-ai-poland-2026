@@ -125,5 +125,7 @@ network — compare **your before** with **your after**, never with these.
 
 ---
 
-Want to go deeper — change detection, scheduling, SSR, bundle size? Check out the full-day
-[PushBased Angular performance workshop](https://push-based.io).
+Want to go deeper? Join Michael Hladky and Julian Jandl for the full-day
+[High-Speed Web Applications Master Class](https://ai-poland.pl/workshop/high-speed-web-applications)
+on **16 November 2026** in Warsaw or online: the rendering pipeline, Core Web Vitals, profiling,
+the JavaScript event loop, and network, CSS and DOM optimization, hands-on all day.
