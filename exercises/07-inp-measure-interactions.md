@@ -12,7 +12,7 @@ That time has three phases:
 
 Good: ≤ **200 ms**. Poor: > **500 ms**.
 
-For this exercise use the **development build** — function names in the flame chart stay readable:
+For this exercise use the **development build** - function names in the flame chart stay readable:
 
 ```bash
 npm run start
@@ -20,7 +20,7 @@ npm run start
 
 > [!NOTE]
 > The sidebar with the navigation links is only visible on wide windows (≈ 1400px and up).
-> On smaller screens, open it with the hamburger menu — or make your browser window wider.
+> On smaller screens, open it with the hamburger menu - or make your browser window wider.
 
 ## 1. Slow down your CPU
 
@@ -47,10 +47,10 @@ Which interaction is the slowest? Which phase dominates?
 
 | Interaction            | Duration       | Input delay | Processing | Presentation |
 |------------------------|----------------|-------------|------------|--------------|
-| click sidebar link     | **136 – 584 ms** | 3 – 11 ms | **117 – 557 ms** | 10 – 25 ms |
-| click "Please like me" | 24 – 40 ms     | 15 – 18 ms  | 0 – 5 ms   | 6 – 20 ms    |
+| click sidebar link     | **136 - 584 ms** | 3 - 11 ms | **117 - 557 ms** | 10 - 25 ms |
+| click "Please like me" | 24 - 40 ms     | 15 - 18 ms  | 0 - 5 ms   | 6 - 20 ms    |
 
-Navigation through the sidebar is slow — and it's the **processing** phase.
+Navigation through the sidebar is slow - and it's the **processing** phase.
 
 In the development build it's even slower:
 
@@ -95,7 +95,7 @@ trackEvent(event: string) {
 ```
 
 An analytics call that runs synchronously in the click handler. The user doesn't care whether
-the click was tracked — they wait for the next page. We fix this in [exercise 08](./08-inp-processing-time.md).
+the click was tracked - they wait for the next page. We fix this in [exercise 08](./08-inp-processing-time.md).
 
 </details>
 
@@ -112,7 +112,7 @@ Record and analyze a few more interactions. For each one, note the slowest phase
   <summary>Hint: the last one</summary>
 
 The new list renders in a single long task after its data arrived. A click that lands during that task
-has to wait for it — a big **input delay**. That's [exercise 09](./09-inp-input-delay-dom-size.md).
+has to wait for it - a big **input delay**. That's [exercise 09](./09-inp-input-delay-dom-size.md).
 
 </details>
 
@@ -120,6 +120,6 @@ has to wait for it — a big **input delay**. That's [exercise 09](./09-inp-inpu
 
 * Use **live metrics** to find slow interactions, a **recording** to explain them.
 * Always look at the three phases: they point to completely different fixes.
-* Throttle the CPU — your users' devices are slower than yours.
+* Throttle the CPU - your users' devices are slower than yours.
 
 Next: [08. Long processing time: get non-urgent work out of the way](./08-inp-processing-time.md)

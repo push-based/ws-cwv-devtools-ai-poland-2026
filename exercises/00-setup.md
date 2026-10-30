@@ -32,7 +32,7 @@ Extensions, cached files and other tabs all influence your measurements.
 * Use a **separate Chrome profile** or an **Incognito window** (extensions are off there by default).
 * Close other heavy tabs.
 * Open DevTools with `F12` or `Ctrl + Shift + I` (Mac: `⌘ + ⌥ + I`).
-* In the **Network** panel, tick **Disable cache** — it is active while DevTools is open.
+* In the **Network** panel, tick **Disable cache** - it is active while DevTools is open.
 
 ## 4. The code you will touch
 

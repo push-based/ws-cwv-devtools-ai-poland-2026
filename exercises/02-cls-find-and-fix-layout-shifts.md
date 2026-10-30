@@ -4,7 +4,7 @@ CLS adds up how much visible content moves around unexpectedly while the page is
 Each shift is scored as `impact fraction × distance fraction`: how much of the viewport moved, times
 how far it moved.
 
-In [01](./01-measure-core-web-vitals.md) you saw that our list page scores somewhere between **0.28 and 0.81** —
+In [01](./01-measure-core-web-vitals.md) you saw that our list page scores somewhere between **0.28 and 0.81** -
 well beyond "poor" (> 0.25). Let's find out why.
 
 ```bash
@@ -100,7 +100,7 @@ Measure again, with the same settings as before. Check the local metric and the
 
 | Run                  | CLS on `/list/popular` |
 |----------------------|------------------------|
-| before (Lighthouse)  | 0.37 – 0.81            |
+| before (Lighthouse)  | 0.37 - 0.81            |
 | after (Lighthouse)   | **0.001**              |
 
 ![cls-after](images/cls/cls-after.png)
@@ -116,7 +116,7 @@ its "recommendations" list below the fold uses the same `movie-card`. We measure
 
 The second classic CLS source is web fonts. The app loads **Poppins** from Google Fonts with
 `display=swap`, so the browser first renders text in a fallback font and swaps it once Poppins has
-arrived — if the two fonts have different metrics, the text reflows.
+arrived - if the two fonts have different metrics, the text reflows.
 
 1. In a recording of a **cold** load, find the `woff2` request in the **Network** track.
 2. Do you see a layout shift right after it finished? Which elements moved?
@@ -131,12 +131,12 @@ On many real sites it's much bigger.
 Options when it matters:
 
 * **`font-display: optional`** (`&display=optional` in the Google Fonts URL): the web font is only
-  used if it is available almost immediately, so it never swaps — at the price of sometimes showing the fallback.
+  used if it is available almost immediately, so it never swaps - at the price of sometimes showing the fallback.
 * **Matching fallback metrics** with `size-adjust`, `ascent-override` & co. on a `@font-face` for the
   local fallback font, so the swap doesn't move anything.
   [Font style matcher](https://meowni.ca/font-style-matcher/) helps you find the values.
 * **Preloading** the font file. Careful with Google Fonts: the `woff2` URLs are versioned and change
-  (in this app they moved from `poppins/v23` to `poppins/v24`) — a hardcoded preload breaks silently.
+  (in this app they moved from `poppins/v23` to `poppins/v24`) - a hardcoded preload breaks silently.
   Self-host the font if you want to preload it.
 
 </details>

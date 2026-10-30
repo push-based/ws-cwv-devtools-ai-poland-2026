@@ -1,7 +1,7 @@
 # 05. LCP: Connect to Critical Origins Early
 
 Before the first request to a new origin, the browser has to look up DNS, open a TCP connection and
-negotiate TLS. On a mobile network that's easily a few hundred milliseconds — and it's part of the
+negotiate TLS. On a mobile network that's easily a few hundred milliseconds - and it's part of the
 LCP **resource load delay**.
 
 `<link rel="preconnect">` tells the browser: *"you're going to need this origin, connect now"*.
@@ -38,7 +38,7 @@ same origin: do they connect again?
 ### 0.2 Performance panel
 
 Record a page load and find the same requests in the **Network** track. The thin line on the left of
-a request bar is time spent before the download — including connecting.
+a request bar is time spent before the download - including connecting.
 
 ![precon-performance-panel](images/network/precon-performance-panel.png)
 
@@ -95,12 +95,12 @@ Be honest with your measurements: compare LCP before and after over several runs
   <summary>What we measured</summary>
 
 We could **not** measure a reliable LCP difference in the lab. Our runs varied by more than a second
-anyway — the TMDB image CDN alone answers anywhere between 1.8 s and 3.2 s on throttled
+anyway - the TMDB image CDN alone answers anywhere between 1.8 s and 3.2 s on throttled
 connections, which buries the ~100 ms saved by connecting early. In DevTools traces connection
 setup is also partly hidden for cross-origin requests.
 
-`preconnect` is still a cheap, safe win for real users on slow networks — as long as you keep it to
-the **2–3 origins** you actually need early. Every preconnect costs a socket and CPU, and an unused
+`preconnect` is still a cheap, safe win for real users on slow networks - as long as you keep it to
+the **2-3 origins** you actually need early. Every preconnect costs a socket and CPU, and an unused
 one is wasted work.
 
 </details>
@@ -109,6 +109,6 @@ one is wasted work.
 
 * Preconnect to origins that are critical for LCP but **discovered late**.
 * Get `crossorigin` right, or the connection can't be reused.
-* Not every good practice shows up in a single lab run. That's fine — know *why* it helps.
+* Not every good practice shows up in a single lab run. That's fine - know *why* it helps.
 
 Next: [06. Serve right-sized images](./06-lcp-right-sized-images.md)

@@ -5,12 +5,12 @@ time and compete for bandwidth with the one that matters: the LCP image.
 
 We have two tools to change that:
 
-* `loading="lazy"` — don't load an image until it gets close to the viewport.
-* `fetchpriority="high"` — tell the browser this request is more important than its siblings.
+* `loading="lazy"` - don't load an image until it gets close to the viewport.
+* `fetchpriority="high"` - tell the browser this request is more important than its siblings.
 
 > [!IMPORTANT]
 > Do [02. CLS](./02-cls-find-and-fix-layout-shifts.md) first (or check out `solution/02-cls-reserve-space`).
-> Without `width` and `height`, every poster is 0px high before it loads — so *all* of them are
+> Without `width` and `height`, every poster is 0px high before it loads - so *all* of them are
 > "in the viewport" and lazy loading does nothing. We tried.
 
 ```bash
@@ -69,7 +69,7 @@ The `movie-card` has an `index` input with its position in the list. Use it to l
 ## 3. Prioritize the LCP image
 
 Images start with a **Low** priority and only get boosted once the browser knows they are in the
-viewport — which is after layout. `fetchpriority="high"` gives the request a high priority from the start.
+viewport - which is after layout. `fetchpriority="high"` gives the request a high priority from the start.
 
 Add `fetchpriority="high"` for the first poster and keep the default (`auto`) for the others.
 
@@ -106,7 +106,8 @@ with `High` priority: 595 kB instead of 3.5 MB.
 ![network-img-after](images/lcp/network-img-after.png)
 
 LCP request discovery now shows ✅ for lazy loading and `fetchpriority`. Only
-"discoverable in initial document" is still ❌ — we fix that in the [bonus exercise](./10-bonus-lcp-ssr.md).
+"discoverable in initial document" is still ❌: the poster URL only exists after the app's JavaScript has
+run and the API has answered.
 
 ![lcp-request-discovery-after](images/lcp/lcp-request-discovery-after.png)
 
@@ -117,7 +118,7 @@ LCP request discovery now shows ✅ for lazy loading and `fetchpriority`. Only
 Run the same measurement 3 times. You'll notice two things:
 
 * **The LCP element changes.** In a 3-column grid, three posters have the same size. Whichever is
-  painted first becomes the LCP — not necessarily the one with `fetchpriority="high"`. On a phone
+  painted first becomes the LCP - not necessarily the one with `fetchpriority="high"`. On a phone
   (one column) it's always the first.
 
   On a tall desktop window we even got this: two full rows visible, and the smallest poster of the
@@ -137,7 +138,7 @@ So: optimize based on how the browser works, verify with **several** lab runs, a
 ## Takeaways
 
 * Never lazy load the LCP image. Lazy load everything else below the fold.
-* `fetchpriority="high"` on the LCP image — and only on very few images.
+* `fetchpriority="high"` on the LCP image - and only on very few images.
 * Lazy loading needs reserved space to work.
 
 Next: [05. Connect to critical origins early](./05-lcp-preconnect.md)

@@ -1,7 +1,7 @@
 # 01. Measure Core Web Vitals
 
 Before fixing anything, we need numbers. In this exercise you will get to know the three places
-Core Web Vitals show up in Chrome — and learn why the numbers never quite match.
+Core Web Vitals show up in Chrome - and learn why the numbers never quite match.
 
 | Metric  | Good      | Needs improvement | Poor      |
 |---------|-----------|-------------------|-----------|
@@ -34,7 +34,7 @@ Open DevTools and go to the **Performance** panel. Without recording anything, y
   <summary>What you should see</summary>
 
 On a fast machine without throttling LCP is probably "good". **CLS is not**: we measured
-**0.28 – 0.87**, clearly "poor". Open the **Layout shifts** log to see which elements moved: one
+**0.28 - 0.87**, clearly "poor". Open the **Layout shifts** log to see which elements moved: one
 big cluster made of `movie-card`s.
 
 ![layout-shifts-log](images/performance-tab/layout-shifts-log.png)
@@ -68,12 +68,12 @@ The same page goes from "good" to "poor".
 
 > [!WARNING]
 > Throttling stays active as long as DevTools is open on that tab. Remember to turn it off when you
-> are done — and remember to turn it **on** again before every measurement in the following exercises.
+> are done - and remember to turn it **on** again before every measurement in the following exercises.
 
 ## 3. Lab vs. field data
 
 Everything you measured so far is **lab data**: one load, on your machine, with your settings.
-What Google uses for ranking — and what your users actually experience — is **field data**, collected
+What Google uses for ranking - and what your users actually experience - is **field data**, collected
 from real Chrome users in the [Chrome UX Report (CrUX)](https://developer.chrome.com/docs/crux).
 
 The Performance panel can show both side by side:
@@ -82,7 +82,7 @@ The Performance panel can show both side by side:
 2. `localhost` has no field data, of course. Open a public site you know (your company's, a news site, …)
    in the same tab and look at the panel again.
 3. Compare **local** vs. **field** values. Use the environment settings to make your local
-   numbers resemble the field numbers — that's how you find a realistic throttling setup for your site.
+   numbers resemble the field numbers - that's how you find a realistic throttling setup for your site.
    DevTools even suggests one: under **Environment settings** it tells you which network throttling
    matches the 75th percentile of your real users.
 
@@ -92,7 +92,7 @@ The Performance panel can show both side by side:
   <summary>Things to know about field data</summary>
 
 * CrUX reports the **75th percentile** over the last **28 days**, split by phone and desktop.
-* Only pages with enough traffic from **publicly indexable** pages are included — a logged-in SaaS app
+* Only pages with enough traffic from **publicly indexable** pages are included - a logged-in SaaS app
   often has no field data at all. That's when you need your own real user monitoring (RUM).
 * To see trends over time, use [CrUX Vis](https://cruxvis.withgoogle.com).
 
@@ -104,14 +104,14 @@ Open the **Lighthouse** panel, choose **Mobile** and **Performance** only, and r
 `/list/popular`.
 
 Lighthouse simulates a slow phone on Slow 4G. Note LCP and CLS and look at the
-**Diagnostics** — you'll meet several of them again in the next exercises.
+**Diagnostics** - you'll meet several of them again in the next exercises.
 
 <details>
   <summary>What we measured</summary>
 
-Performance score **0.45 – 0.55**, LCP **5.7 – 8.0 s**, CLS **0.37 – 0.81**.
+Performance score **0.45 - 0.55**, LCP **5.7 - 8.0 s**, CLS **0.37 - 0.81**.
 
-Run it three times. The numbers change between runs — this is normal. Always compare the
+Run it three times. The numbers change between runs - this is normal. Always compare the
 **median of several runs**, never a single run.
 
 </details>

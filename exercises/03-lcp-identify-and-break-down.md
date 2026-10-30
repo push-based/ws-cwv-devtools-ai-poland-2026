@@ -126,10 +126,10 @@ Select the poster request in the **Network** track (or the **Network** panel). L
 <details>
   <summary>Solution</summary>
 
-* All **20 posters** of the list are requested at once — even the ones far below the fold.
+* All **20 posters** of the list are requested at once - even the ones far below the fold.
   They all compete for the same bandwidth.
 * Every poster is requested as `w780` (≈ 190 kB), though it's displayed ~300px wide.
-* In total the page transfers about **3.5 – 3.9 MB**, almost all of it images. The
+* In total the page transfers about **3.5 - 3.9 MB**, almost all of it images. The
   **Improve image delivery** insight estimates **3.3 MB** of possible savings.
 
 </details>
@@ -150,8 +150,8 @@ Fill in this table for the list page. You'll work through it in the next exercis
 
 | Sub-part               | Cause in this app                                 | Fix                                            | Exercise |
 |------------------------|---------------------------------------------------|------------------------------------------------|----------|
-| Time to first byte     | – (served locally)                                | caching, CDN; watch it when adding SSR         | 10       |
-| Resource load delay    | late discovery (HTML → JS → API → img), no priority, new connection | `fetchpriority`, `preconnect`, SSR | 04, 05, 10 |
+| Time to first byte     | - (served locally)                                | caching, CDN                                   | -        |
+| Resource load delay    | late discovery (HTML → JS → API → img), no priority, new connection | `fetchpriority`, `preconnect` | 04, 05 |
 | Resource load duration | 20 posters at once, all `w780`                   | lazy loading, responsive images                | 04, 06   |
 | Element render delay   | small here                                        | less JS / DOM before first render              | 09       |
 
@@ -159,7 +159,7 @@ Fill in this table for the list page. You'll work through it in the next exercis
 
 ## 6. Bonus: compare and share recordings
 
-* Record two or three more loads. Use the dropdown in the Performance toolbar to switch between them —
+* Record two or three more loads. Use the dropdown in the Performance toolbar to switch between them -
   you'll see how much the numbers vary.
 * Use **Save profile** to export a trace, and **Load profile** in a second DevTools window to compare
   two traces side by side. Traces are also the best way to share a performance problem with a colleague.

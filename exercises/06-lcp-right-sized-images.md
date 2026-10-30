@@ -1,6 +1,6 @@
 # 06. LCP: Serve Right-Sized Images
 
-Every poster in the grid is requested as `w780` — 780 pixels wide — but displayed at roughly 300px on a
+Every poster in the grid is requested as `w780` - 780 pixels wide - but displayed at roughly 300px on a
 desktop screen. The browser downloads several times more bytes than it can show, and that's
 **resource load duration** of the LCP.
 
@@ -29,7 +29,7 @@ At 1280×800: rendered **308 × 462**, intrinsic **780 × 1170**. The LCP poster
 
 </details>
 
-## 1. `srcset` and `sizes` — the platform way
+## 1. `srcset` and `sizes` - the platform way
 
 With plain HTML you'd write:
 
@@ -47,7 +47,7 @@ With plain HTML you'd write:
 * `sizes` tells the browser how wide the image will be *displayed*, before CSS is applied.
 * The browser multiplies that with the device pixel ratio and picks the smallest file that is big enough.
 
-Angular's `NgOptimizedImage` directive generates all of that for us — and also takes care of
+Angular's `NgOptimizedImage` directive generates all of that for us - and also takes care of
 `loading`, `fetchpriority` and a few warnings. Let's use it.
 
 ## 2. Configure an image loader
@@ -122,7 +122,7 @@ Branch: `solution/06-lcp-image-size`
 
 > [!TIP]
 > Run the dev build (`npm run start`) once and check the console. `NgOptimizedImage` warns about
-> common mistakes — e.g. an LCP image without `priority`, or a missing `preconnect` for the image origin.
+> common mistakes - e.g. an LCP image without `priority`, or a missing `preconnect` for the image origin.
 >
 > ![ng-image-prio-warning](images/network/ng-image-prio-warning.png)
 
@@ -162,6 +162,6 @@ On a high-DPR phone the poster really *is* displayed at ~650 physical pixels, so
 
 * Ship images at the size they're displayed, times the device pixel ratio.
 * `srcset` + `sizes` let the browser choose; a framework image component saves you the boilerplate.
-* `sizes` for above-the-fold images is a guess — make it a good one.
+* `sizes` for above-the-fold images is a guess - make it a good one.
 
 Next: [07. Measure and break down interactions](./07-inp-measure-interactions.md)

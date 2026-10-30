@@ -1,9 +1,9 @@
-# 09. INP: Input Delay — Long Rendering Tasks and DOM Size
+# 09. INP: Input Delay - Long Rendering Tasks and DOM Size
 
 An interaction can be slow even if its own handler is fast: if the main thread is busy when the user
 clicks, the event has to wait. That waiting time is the **input delay**.
 
-Where does a busy main thread come from? Often from rendering — and rendering gets more expensive
+Where does a busy main thread come from? Often from rendering - and rendering gets more expensive
 the more DOM nodes there are.
 
 ```bash
@@ -16,7 +16,7 @@ Keep **6x CPU throttling** on.
 
 1. Open `/list/popular`, start a recording.
 2. Click a sidebar link (e.g. a genre) and wait until the new list is visible. Stop the recording.
-3. In the **Main** track, look for tasks with a **red corner** — long tasks over 50 ms.
+3. In the **Main** track, look for tasks with a **red corner** - long tasks over 50 ms.
 4. Find the one that renders the movie list after the API response arrived. Click it and check the
    **Summary** and **Bottom-up** tabs: how much is scripting, how much is rendering (style, layout)?
 
@@ -94,7 +94,7 @@ long lists without virtualization.
 ## 4. Remove what nobody sees
 
 Delete the placeholder nodes from `movie-card.component.ts` (the `@for` block, the `work` input and
-`workItems`), then repeat steps 1–3.
+`workItems`), then repeat steps 1-3.
 
 <details>
   <summary>Solution</summary>
@@ -144,12 +144,10 @@ The list render is still >100 ms. Two ideas to try:
   />
   ```
 
-Record again and compare: what happens to the long task — and to LCP?
+Record again and compare: what happens to the long task - and to LCP?
 
 ## Takeaways
 
-* Input delay is caused by *other* work on the main thread — look at what runs **before** the event.
+* Input delay is caused by *other* work on the main thread - look at what runs **before** the event.
 * DOM size multiplies the cost of every render, style recalculation and layout.
 * Long tasks can be avoided by doing less, or split by yielding to the browser in between.
-
-Bonus: [10. LCP with server-side rendering](./10-bonus-lcp-ssr.md)
